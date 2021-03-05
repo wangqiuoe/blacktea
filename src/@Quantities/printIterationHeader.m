@@ -9,6 +9,6 @@ function printIterationHeader(Q,reporter)
 
 % Print iteration values
 reporter.printf(Enumerations.R_SOLVER,Enumerations.R_PER_ITERATION,...
-  ' Iter.   Objective    |Constraint|     Merit    ');
+  ' Iter.   Objective    ');
 
 end % printIterationHeader

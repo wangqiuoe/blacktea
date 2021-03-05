@@ -27,6 +27,7 @@ classdef Quantities < handle
     iteration_counter_ = 0
     objective_function_evaluation_counter_ = 0
     objective_gradient_evaluation_counter_ = 0
+    objective_hessian_evaluation_counter_ = 0
     
     %%%%%%%%%%%%%%
     % INDICATORS %
@@ -293,7 +294,6 @@ classdef Quantities < handle
       end
       
       % Set current iterate to trial iterate
-      % what is it
       Q.current_iterate_ = Q.trial_iterate_;
       
     end % updateIterate
@@ -325,6 +325,15 @@ classdef Quantities < handle
       Q.objective_gradient_evaluation_counter_ = Q.objective_gradient_evaluation_counter_ + 1;
       
     end % incrementObjectiveGradientEvaluationCounter
+
+    % Increment objective hessian evaluation counter
+    function incrementObjectiveHessianEvaluationCounter(Q)
+      
+      % Increment objective gradient evaluation counter
+      Q.objective_hessian_evaluation_counter_ = Q.objective_hessian_evaluation_counter_ + 1;
+      
+    end % incrementObjectiveHessianEvaluationCounter
+    
     
   end % methods (public access)
   

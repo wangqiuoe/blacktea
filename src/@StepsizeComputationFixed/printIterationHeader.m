@@ -4,7 +4,7 @@
 %
 % Authors: Frank E. Curtis
 
-% StepsizeComputationAdaptive: printIterationHeader
+% StepsizeComputationConservative: printIterationHeader
 function printIterationHeader(S,reporter)
 
 % Print iteration header

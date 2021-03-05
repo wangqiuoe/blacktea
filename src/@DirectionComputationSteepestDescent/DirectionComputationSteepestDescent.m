@@ -2,10 +2,7 @@
 %
 % All Rights Reserved.
 %
-% Authors: Frank E. Curtis
-
-% StepsizeComputationAdaptive class
-classdef StepsizeComputationAdaptive < StepsizeComputation
+classdef DirectionComputationSteepestDescent < DirectionComputation
   
   % Properties (private access)
   properties (SetAccess = private, GetAccess = private)
@@ -13,17 +10,11 @@ classdef StepsizeComputationAdaptive < StepsizeComputation
     %%%%%%%%
     % NAME %
     %%%%%%%%
-    n = 'Adaptive'
+    n = 'SteepestDescent'
     
     %%%%%%%%%%%
     % OPTIONS %
     %%%%%%%%%%%
-    objective_Lipschitz_
-    constraint_Lipschitz_
-    projection_width_
-    stepsize_diminishing_
-    stepsize_scaling_
-    sufficient_decrease_
     
   end % properties (private access)
   
@@ -47,7 +38,7 @@ classdef StepsizeComputationAdaptive < StepsizeComputation
     %%%%%%%%%%%%%%%
     
     % Constructor
-    function S = StepsizeComputationAdaptive
+    function D = DirectionComputationSteepestDescent
       
       % DO NOTHING
       
@@ -58,10 +49,10 @@ classdef StepsizeComputationAdaptive < StepsizeComputation
     %%%%%%%%%%%%%%%%%
     
     % Print iteration header
-    printIterationHeader(S,reporter)
+    printIterationHeader(D,reporter)
     
     % Print iteration values
-    printIterationValues(S,quantities,reporter)
+    printIterationValues(D,quantities,reporter)
     
     %%%%%%%%%%%%%%%%%%%
     % OPTIONS METHODS %
@@ -93,9 +84,9 @@ classdef StepsizeComputationAdaptive < StepsizeComputation
     % COMPUTE METHODS %
     %%%%%%%%%%%%%%%%%%%
     
-    % Compute stepsize
-    computeStepsize(D,options,quantities,reporter,strategies)
+    % Compute direction
+    err = computeDirection(D,options,quantities,reporter,strategies)
     
   end % methods (public access)
   
-end % StepsizeComputationAdaptive
+end % DirectionComputationSteepestDescent

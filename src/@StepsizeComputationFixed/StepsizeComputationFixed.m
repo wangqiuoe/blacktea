@@ -1,11 +1,7 @@
 % Copyright (C) 2020 Frank E. Curtis
 %
-% All Rights Reserved.
-%
-% Authors: Frank E. Curtis
-
-% DirectionComputationEQP class
-classdef DirectionComputationEQP < DirectionComputation
+% StepsizeComputationFixed class
+classdef StepsizeComputationFixed < StepsizeComputation
   
   % Properties (private access)
   properties (SetAccess = private, GetAccess = private)
@@ -13,12 +9,12 @@ classdef DirectionComputationEQP < DirectionComputation
     %%%%%%%%
     % NAME %
     %%%%%%%%
-    n = 'EQP'
+    n = 'Fixed'
     
     %%%%%%%%%%%
     % OPTIONS %
     %%%%%%%%%%%
-    use_hessian_of_lagrangian_
+    stepsizeinit_
     
   end % properties (private access)
   
@@ -42,7 +38,7 @@ classdef DirectionComputationEQP < DirectionComputation
     %%%%%%%%%%%%%%%
     
     % Constructor
-    function D = DirectionComputationEQP
+    function S = StepsizeComputationFixed
       
       % DO NOTHING
       
@@ -53,10 +49,10 @@ classdef DirectionComputationEQP < DirectionComputation
     %%%%%%%%%%%%%%%%%
     
     % Print iteration header
-    printIterationHeader(D,reporter)
+    printIterationHeader(S,reporter)
     
     % Print iteration values
-    printIterationValues(D,quantities,reporter)
+    printIterationValues(S,quantities,reporter)
     
     %%%%%%%%%%%%%%%%%%%
     % OPTIONS METHODS %
@@ -88,9 +84,9 @@ classdef DirectionComputationEQP < DirectionComputation
     % COMPUTE METHODS %
     %%%%%%%%%%%%%%%%%%%
     
-    % Compute direction
-    err = computeDirection(D,options,quantities,reporter,strategies)
+    % Compute stepsize
+    computeStepsize(D,options,quantities,reporter,strategies)
     
   end % methods (public access)
   
-end % DirectionComputationEQP
+end % StepsizeComputationFixed

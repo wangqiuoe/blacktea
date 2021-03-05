@@ -4,7 +4,7 @@
 %
 % Authors: Frank E. Curtis
 
-% StepsizeComputationAdaptive: printIterationValues
+% StepsizeComputationConservative: printIterationValues
 function printIterationValues(S,quantities,reporter)
 
 % Print iteration values

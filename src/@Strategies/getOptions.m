@@ -11,29 +11,11 @@ function getOptions(S,options,reporter)
 direction_computation_name = options.getOption(reporter,'direction_computation');
 stepsize_computation_name = options.getOption(reporter,'stepsize_computation');
 
-% Switch on direction computation names
-switch direction_computation_name
-  case 'EQP'
-    S.direction_computation_ = DirectionComputationEQP;
-  case 'Subgradient'
-    S.direction_computation_ = DirectionComputationSubgradient;
-  case 'SteepestDescent'
-    S.direction_computation_ = DirectionComputationSteepestDescent;
-  otherwise
-    S.direction_computation_ = DirectionComputationEQP;
-end
+% Initial direction_computation
+S.direction_computation_ = eval(['DirectionComputation', char(direction_computation_name)]);
 
 % Switch on stepsize computation names
-switch stepsize_computation_name
-  case 'Adaptive'
-    S.stepsize_computation_ = StepsizeComputationAdaptive;
-  case 'Conservative'
-    S.stepsize_computation_ = StepsizeComputationConservative;
-  case 'Fixed'
-    S.stepsize_computation_ = StepsizeComputationFixed;
-  otherwise
-    S.stepsize_computation_ = StepsizeComputationAdaptive;
-end
+S.stepsize_computation_ = eval(['StepsizeComputation', char(stepsize_computation_name)]);
 
 % Get options
 S.direction_computation_.getOptions(options,reporter);

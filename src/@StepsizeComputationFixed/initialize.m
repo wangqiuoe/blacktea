@@ -4,7 +4,7 @@
 %
 % Authors: Frank E. Curtis
 
-% StepsizeComputationAdaptive: initialize
+% StepsizeComputationConservative: initialize
 function initialize(S,options,quantities,reporter)
 
 % Initialize

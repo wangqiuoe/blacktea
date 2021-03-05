@@ -2,10 +2,7 @@
 %
 % All Rights Reserved.
 %
-% Authors: Frank E. Curtis
-
-% StepsizeComputationConservative class
-classdef StepsizeComputationConservative < StepsizeComputation
+classdef DirectionComputationNewton < DirectionComputation
   
   % Properties (private access)
   properties (SetAccess = private, GetAccess = private)
@@ -13,15 +10,11 @@ classdef StepsizeComputationConservative < StepsizeComputation
     %%%%%%%%
     % NAME %
     %%%%%%%%
-    n = 'Conservative'
+    n = 'Newton'
     
     %%%%%%%%%%%
     % OPTIONS %
     %%%%%%%%%%%
-    objective_Lipschitz_
-    constraint_Lipschitz_
-    stepsize_diminishing_
-    stepsize_scaling_
     
   end % properties (private access)
   
@@ -45,7 +38,7 @@ classdef StepsizeComputationConservative < StepsizeComputation
     %%%%%%%%%%%%%%%
     
     % Constructor
-    function S = StepsizeComputationConservative
+    function D = DirectionComputationNewton
       
       % DO NOTHING
       
@@ -56,10 +49,10 @@ classdef StepsizeComputationConservative < StepsizeComputation
     %%%%%%%%%%%%%%%%%
     
     % Print iteration header
-    printIterationHeader(S,reporter)
+    printIterationHeader(D,reporter)
     
     % Print iteration values
-    printIterationValues(S,quantities,reporter)
+    printIterationValues(D,quantities,reporter)
     
     %%%%%%%%%%%%%%%%%%%
     % OPTIONS METHODS %
@@ -91,9 +84,9 @@ classdef StepsizeComputationConservative < StepsizeComputation
     % COMPUTE METHODS %
     %%%%%%%%%%%%%%%%%%%
     
-    % Compute stepsize
-    computeStepsize(D,options,quantities,reporter,strategies)
+    % Compute direction
+    err = computeDirection(D,options,quantities,reporter,strategies)
     
   end % methods (public access)
   
-end % StepsizeComputationConservative
+end % DirectionComputationNewton

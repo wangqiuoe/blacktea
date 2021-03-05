@@ -54,6 +54,12 @@ while true
   
   % Print stepsize values
   S.strategies_.stepsizeComputation.printIterationValues(S.quantities_,S.reporter_);
+
+  % Create trial iterate
+  trial_iterate = Point(S.quantities_.currentIterate,S.quantities_.currentIterate.primalPoint + S.quantities_.stepsize * S.quantities_.directionPrimal);
+
+  % Set trial iterate
+  S.quantities_.setTrialIterate(trial_iterate);
   
   % Update current iterate to trial iterate
   S.quantities_.updateIterate;

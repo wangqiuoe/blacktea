@@ -1,11 +1,7 @@
 % Copyright (C) 2020 Frank E. Curtis
 %
-% All Rights Reserved.
-%
-% Authors: Frank E. Curtis
-
-% DirectionComputationSubgradient class
-classdef DirectionComputationSubgradient < DirectionComputation
+% StepsizeComputationArmijo class
+classdef StepsizeComputationArmijo < StepsizeComputation
   
   % Properties (private access)
   properties (SetAccess = private, GetAccess = private)
@@ -13,12 +9,14 @@ classdef DirectionComputationSubgradient < DirectionComputation
     %%%%%%%%
     % NAME %
     %%%%%%%%
-    n = 'Subgradient'
+    n = 'Armijo'
     
     %%%%%%%%%%%
     % OPTIONS %
     %%%%%%%%%%%
-    compute_least_squares_multipliers_
+    stepsizeinit_
+    c1_
+    tao_
     
   end % properties (private access)
   
@@ -42,7 +40,7 @@ classdef DirectionComputationSubgradient < DirectionComputation
     %%%%%%%%%%%%%%%
     
     % Constructor
-    function D = DirectionComputationSubgradient
+    function S = StepsizeComputationArmijo
       
       % DO NOTHING
       
@@ -53,10 +51,10 @@ classdef DirectionComputationSubgradient < DirectionComputation
     %%%%%%%%%%%%%%%%%
     
     % Print iteration header
-    printIterationHeader(D,reporter)
+    printIterationHeader(S,reporter)
     
     % Print iteration values
-    printIterationValues(D,quantities,reporter)
+    printIterationValues(S,quantities,reporter)
     
     %%%%%%%%%%%%%%%%%%%
     % OPTIONS METHODS %
@@ -88,9 +86,9 @@ classdef DirectionComputationSubgradient < DirectionComputation
     % COMPUTE METHODS %
     %%%%%%%%%%%%%%%%%%%
     
-    % Compute direction
-    err = computeDirection(D,options,quantities,reporter,strategies)
+    % Compute stepsize
+    computeStepsize(D,options,quantities,reporter,strategies)
     
   end % methods (public access)
   
-end % DirectionComputationSubgradient
+end % StepsizeComputationArmijo
